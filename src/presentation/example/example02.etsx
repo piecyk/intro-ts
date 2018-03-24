@@ -1,0 +1,82 @@
+// todo: note
+interface Color {
+  red: number;
+  green: number;
+  blue: number;
+}
+// yeah keyof!
+type ColorKeys = keyof Color;
+type onColorUpdated = (color: Color) => void;
+
+const InputRange = ({
+  color,
+  colorKey,
+  onColorUpdated
+}: {
+  color: Color;
+  colorKey: ColorKeys;
+  onColorUpdated: onColorUpdated;
+}) => (
+  <div style={{padding: 5}}>
+    <input
+      type="range"
+      min="0"
+      max="255"
+      value={color[colorKey]}
+      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+        onColorUpdated({
+          ...color,
+          [colorKey]: parseInt(event.target.value, 10)
+        })
+      }
+    />
+    <span style={{width: 30, display: 'inline-block'}}>{color[colorKey]}</span>
+  </div>
+);
+
+interface Props {
+  color: Color;
+  onColorUpdated: (color: Color) => void;
+}
+const ColorPicker = ({color, onColorUpdated}: Props) => {
+  return (
+    <div>
+      {Object.keys(color).map((c: ColorKeys) => (
+        <InputRange
+          key={c}
+          color={color}
+          colorKey={c}
+          onColorUpdated={onColorUpdated}
+        />
+      ))}
+    </div>
+  );
+};
+
+class App extends React.Component<{}, {color: Color}> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {color: {red: 90, green: 50, blue: 70}};
+  }
+  setColorState(newColor: Color) {
+    this.setState({color: newColor});
+  }
+  public render() {
+    const {color} = this.state;
+    const {red, green, blue} = color;
+    return (
+      <div style={{color: '#000'}}>
+        <h1 style={{color: `rgb(${red}, ${green}, ${blue})`}}>Color Picker</h1>
+        <div>
+          Color: [red: {red}, green: {green}, blue: {blue}]
+        </div>
+        <ColorPicker
+          color={color}
+          onColorUpdated={this.setColorState.bind(this)}
+        />
+      </div>
+    );
+  }
+}
+
+render(<App />);

@@ -1,0 +1,13 @@
+// todo:
+// Boolean
+let isDone: boolean = false;
+// Number
+let decimal: number = 6;
+let hex: number = 0xf00d;
+// String
+let color: string = 'blue';
+let me = 'Damian';
+let sentence: string = `Hello, my name is ${me}.`;
+
+// todo add console looger to live preview
+render(null);

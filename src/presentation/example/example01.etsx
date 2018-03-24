@@ -1,0 +1,15 @@
+// todo: note
+interface Props {
+  name: string;
+  year: number;
+}
+
+const Hello = ({name, year}: Props) => (
+  <div style={{color: '#000'}}>
+    <h1>
+      Hello {name} {year}
+    </h1>
+  </div>
+);
+
+render(<Hello name="Rzeszów" />);
