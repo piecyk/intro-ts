@@ -22,8 +22,8 @@ module.exports = {
   },
   output: {
     path: outPath,
-    filename: "[name].bundle.js",
-    publicPath: '/'
+    filename: "[name].bundle.js"
+    // publicPath: '/'
   },
   resolve: {
     modules: [
