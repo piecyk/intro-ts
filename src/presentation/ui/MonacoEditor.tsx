@@ -21,21 +21,16 @@ global.MonacoEnvironment = {
   }
 };
 
-// compiler options
-monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-  noEmit: true,
-  noImplicitAny: true,
-  sourceMap: false,
-  jsx: 2
-});
-
 monaco.languages.typescript.typescriptDefaults.addExtraLib(
   require('raw-loader!../../../node_modules/@types/react/index.d.ts'),
   'react.d.ts'
 );
 
 monaco.languages.typescript.typescriptDefaults.addExtraLib(
-  'declare function render(Component: React.ReactNode): void;',
+  `
+  declare function render(Component: React.ReactNode): void;
+  declare var LiveLogger: any;
+  `,
   'foo.d.ts'
 );
 
@@ -49,6 +44,7 @@ interface Props {
   code: string;
   onError: (error: Error) => void;
   onChange: (nextCode: string) => void;
+  noImplicitAny: boolean;
 }
 
 // only one editor per slide
@@ -76,7 +72,15 @@ class MonacoEditor extends Component<Props, {}> {
     window.setTimeout(() => {
       if (this.mouted && this.editorRootEl) {
         this.dispose();
-
+        // compiler option
+        const {noImplicitAny = false} = this.props;
+        monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+          noEmit: true,
+          noImplicitAny,
+          sourceMap: false,
+          jsx: 2
+        });
+        //
         editorRef = monaco.editor.create(this.editorRootEl, {
           model: modelRef,
           theme: 'vs-dark',

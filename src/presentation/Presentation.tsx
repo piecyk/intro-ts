@@ -4,13 +4,23 @@ import {Emoji} from 'emoji-mart';
 import {Portal} from 'react-portal';
 
 // Import Spectacle Core tags
-import {BlockQuote, Cite, Deck, Heading, Quote, Slide, Text} from 'spectacle';
+import {
+  BlockQuote,
+  Cite,
+  Deck,
+  Heading,
+  Quote,
+  Slide,
+  Text,
+  Image
+} from 'spectacle';
 
 import ComponentPlayground from 'presentation/ui/ComponentPlayground';
 import WeAreHiring from 'presentation/ui/Scalac/WeAreHiring';
 import Scalac from 'presentation/ui/Scalac/Scalac';
 import Avatar from 'presentation/ui/Avatar';
 import ExternalLink from 'presentation/ui/ExternalLink';
+import LiveLogger from 'presentation/ui/LiveLogger';
 
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
@@ -19,6 +29,7 @@ require('normalize.css');
 
 // assets
 import MePicture from 'public_static/assets/me.jpg';
+import NotCare from 'public_static/assets/NotCare.gif';
 import ScalacLogoPicture from './ui/Scalac/ScalacLogo.png';
 
 const MyEmoji = ({id, size}: {id: string; size: number}) => (
@@ -149,29 +160,39 @@ export default class Presentation extends React.Component<{}, {}> {
             </div>
           </Slide>
           <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
-            <Heading size={4} textColor="secondary" caps>
-              TypeScript — JavaScript with superpowers
+            <Heading size={4} textColor="secondary">
+              Why TypeScript? — JS with superpowers
             </Heading>
             <Text textColor="tertiary">
               Giving Type Check to JavaScript <br /> ( from 2012 )
             </Text>
             <div style={{margin: '30px 0px 0px 30px', textAlign: 'left'}}>
               <Text textColor="#333" textSize={'1em'} margin="15px 0">
-                > March 2018 - 8,584,855 downloads of <br /> typescript package!{' '}
-                <MyMyEmoji32 id={'open_mouth'} />
+                > No surprise here <b>TYPES</b>
               </Text>
               <Text textColor="#333" textSize={'1em'} margin="15px 0">
-                > GitHub’s own 2017 State of the Octoverse puts TypeScript as
-                the 11th
+                > <b>Open Source!</b> <MyMyEmoji32 id={'clap'} />,
+                DefinitelyTyped, Tool's Integration
               </Text>
               <Text textColor="#333" textSize={'1em'} margin="15px 0">
-                > Not Just Angular(n)
+                > March 2018 - <b>8,584,855</b> downloads of <br /> typescript
+                package! <MyMyEmoji32 id={'open_mouth'} />
               </Text>
               <Text textColor="#333" textSize={'1em'} margin="15px 0">
-                > Open Source! <MyMyEmoji32 id={'clap'} />, DefinitelyTyped,
-                Tool's Integration
+                > GitHub’s own 2017 State of the Octoverse puts{' '}
+                <b>TypeScript the 11th</b> most popular language!
               </Text>
             </div>
+          </Slide>
+          <Slide
+            transition={['fade']}
+            bgColor="quarternary"
+            textColor="tertiary"
+          >
+            <Image src={NotCare} margin="0px auto 40px" />
+            <Heading size={4} textColor="secondary">
+              I know you care... <MyMyEmoji64 id={'hugging_face'} />
+            </Heading>
           </Slide>
           <Slide transition={['fade']} bgColor="secondary" textColor="primary">
             <BlockQuote>
@@ -180,6 +201,23 @@ export default class Presentation extends React.Component<{}, {}> {
               </Quote>
               <Cite>Eric Elliott</Cite>
             </BlockQuote>
+          </Slide>
+          <Slide transition={['fade']} bgColor="secondary" textColor="primary">
+            <Heading size={6} textColor="primary" caps>
+              Example Code 00 - TypeScript in 5 minutes
+            </Heading>
+            <ComponentPlayground
+              theme="dark"
+              code={require('raw-loader!./example/example00.etsx')}
+              previewBackgroundColor="#ff0"
+              scope={{LiveLogger}}
+              transformCode={transformCode}
+            />
+          </Slide>
+          <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
+            <Heading size={4} textColor="secondary">
+              Where JS is not so good...
+            </Heading>
           </Slide>
           <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
             <Heading size={6} textColor="primary" caps>
@@ -192,6 +230,11 @@ export default class Presentation extends React.Component<{}, {}> {
               transformCode={transformCode}
             />
           </Slide>
+          <Slide transition={['fade']} bgColor="tertiary">
+            <Heading size={4} textColor="secondary">
+              Compiler options <MyMyEmoji64 id={'thinking_face'} />
+            </Heading>
+          </Slide>
           <Slide transition={['fade']} bgColor="secondary" textColor="primary">
             <Heading size={6} textColor="primary" caps>
               Example Code 01
@@ -201,7 +244,13 @@ export default class Presentation extends React.Component<{}, {}> {
               code={require('raw-loader!./example/example01.etsx')}
               previewBackgroundColor="#ff0"
               transformCode={transformCode}
+              noImplicitAny={true}
             />
+          </Slide>
+          <Slide transition={['fade']} bgColor="tertiary">
+            <Heading size={4} textColor="secondary">
+              TS and JS together <MyMyEmoji64 id={'heart_eyes'} />
+            </Heading>
           </Slide>
           <Slide transition={['fade']} bgColor="secondary" textColor="primary">
             <Heading size={6} textColor="primary" caps>

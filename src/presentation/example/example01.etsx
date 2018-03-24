@@ -4,7 +4,7 @@ interface Props {
   year: number;
 }
 
-const Hello = ({name, year}: Props) => (
+const Hello = ({name, year}) => (
   <div style={{color: '#000'}}>
     <h1>
       Hello {name} {year}
@@ -12,4 +12,4 @@ const Hello = ({name, year}: Props) => (
   </div>
 );
 
-render(<Hello name="Rzeszów" />);
+render(<Hello name="JS Rzeszów" year={2018} />);

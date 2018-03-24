@@ -1,0 +1,21 @@
+// todo: note
+render(<LiveLogger />);
+
+// yarn or npm
+// > npm install -g typescript
+// type the following JavaScript code in foo.ts
+function greeter(year) {
+  return `Hello, Damian it's ${year}`;
+}
+var year = 2017;
+console.log(greeter(year));
+// now run, > tsc foo.ts
+// foo.js will be created with the same content as ts file
+
+// now add types to `greeter(year: number)`
+// and un-comment two lines below
+// var nextYear = '2018';
+// console.log(greeter(nextYear));
+
+// compiling, you’ll now see an error...
+// way? what is wrong?

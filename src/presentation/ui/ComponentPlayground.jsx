@@ -28,12 +28,19 @@ const MyEditor = (props, {live}) => {
       code={live.code}
       onChange={code => {
         live.onChange(code);
+        // if (props.onChange) {
+        //  props.onChange(code);
+        // }
       }}
       onError={error => {
         live.onError(error);
       }}
     />
   );
+};
+
+MyEditor.propTypes = {
+  onChange: PropTypes.func
 };
 
 MyEditor.contextTypes = {
@@ -233,7 +240,8 @@ class ComponentPlayground extends Component {
       previewBackgroundColor,
       scope = {},
       theme = 'dark',
-      transformCode
+      transformCode,
+      noImplicitAny
     } = this.props;
 
     const useDarkTheme = theme === 'dark';
@@ -278,6 +286,7 @@ class ComponentPlayground extends Component {
                 this.context.styles.prism[useDarkTheme ? 'dark' : 'light']
               }
               onChange={this.onEditorChange}
+              noImplicitAny={noImplicitAny}
             />
           </PlaygroundColumn>
         </PlaygroundRow>
@@ -296,7 +305,8 @@ ComponentPlayground.propTypes = {
   previewBackgroundColor: PropTypes.string,
   scope: PropTypes.object,
   theme: PropTypes.oneOf(['dark', 'light', 'external']),
-  transformCode: PropTypes.func
+  transformCode: PropTypes.func,
+  noImplicitAny: PropTypes.bool
 };
 
 ComponentPlayground.defaultProps = {
