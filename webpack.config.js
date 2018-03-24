@@ -50,15 +50,17 @@ module.exports = {
       /^((fs)|(path)|(os)|(crypto)|(source-map-support))$/,
       /vs\/language\/typescript\/lib/
     ),
-    new CleanWebpackPlugin(outPath, {
-      verbose: true,
-      dry: false,
-    }),
-    new CopyWebpackPlugin([{
-      from: path.resolve(srcPath, 'public_static'),
-      to: outPath,
-      ignore: '**/.DS_Store'
-    }]),
+    ...isDevelopment ? [] : [
+      new CleanWebpackPlugin(outPath, {
+        verbose: true,
+        dry: false,
+      }),
+      new CopyWebpackPlugin([{
+        from: path.resolve(srcPath, 'public_static'),
+        to: outPath,
+        ignore: '**/.DS_Store'
+      }]),
+    ]
   ],
   module: {
     rules: [{

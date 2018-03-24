@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 // import ReactDOM from 'react-dom';
-
-import * as monaco from 'monaco-editor';
+// import * as monaco from 'monaco-editor';
 
 // todo limit
-// import 'monaco-editor/esm/vs/editor/browser/controller/coreCommands.js';
-// import 'monaco-editor/esm/vs/editor/contrib/find/findController.js';
-// import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
-// import 'monaco-editor/esm/vs/language/typescript/monaco.contribution';
+import 'monaco-editor/esm/vs/editor/browser/controller/coreCommands.js';
+import 'monaco-editor/esm/vs/editor/contrib/find/findController.js';
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
+import 'monaco-editor/esm/vs/language/typescript/monaco.contribution';
 
 // const editorRoot = document.getElementById('editor-root') as HTMLDivElement;
 // const EditorPortal = ({children}: {children: React.ReactNode}) =>
@@ -119,6 +118,7 @@ class MonacoEditor extends Component<Props, {}> {
     return (
       <div
         style={{
+          backgroundColor: '#1e1e1e',
           direction: 'ltr',
           textAlign: 'left',
           height: '100%',

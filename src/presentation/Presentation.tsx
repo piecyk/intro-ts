@@ -80,7 +80,7 @@ export default class Presentation extends React.Component<{}, {}> {
             </Text>
           </Slide>
           <Slide transition={['fade']} bgColor="tertiary">
-            <Heading size={1} fit caps lineHeight={1} textColor="primary">
+            <Heading size={2} fit caps lineHeight={1} textColor="primary">
               About me
             </Heading>
             <div

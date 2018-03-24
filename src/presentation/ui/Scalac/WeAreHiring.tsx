@@ -2,6 +2,8 @@ import React from 'react';
 
 import ExternalLink from 'presentation/ui/ExternalLink';
 
+// todo: add animation
+
 const WeAreHiring = () => (
   <ExternalLink
     href={'https://scalac.io/join_us/'}
@@ -9,7 +11,7 @@ const WeAreHiring = () => (
       display: 'flex',
       justifyContent: 'center',
       color: '#fff',
-      backgroundColor: '#294E80',
+      backgroundColor: '#ED3223',
       height: 140,
       width: 140,
       position: 'absolute',
