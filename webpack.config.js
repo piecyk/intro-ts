@@ -13,6 +13,7 @@ module.exports = {
   mode: isDevelopment ? 'development' : 'production',
   entry: {
     "app": [
+      // "@babel/polyfill" ?
       // "webpack-hot-middleware/client",
       // "react-hot-loader/patch",
       path.resolve(srcPath, 'index.tsx')
@@ -99,5 +100,6 @@ module.exports = {
       loader: "url-loader?mimetype=image/jpg",
       include: srcPath
     }]
+    // linters
   }
 };

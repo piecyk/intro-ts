@@ -180,10 +180,13 @@ class ComponentPlayground extends Component {
     this.onRef = this.onRef.bind(this);
     this.onEditorChange = this.onEditorChange.bind(this);
     this.requestFullscreen = this.requestFullscreen.bind(this);
+    this.togglePreview = this.togglePreview.bind(this);
     this.syncCode = this.syncCode.bind(this);
 
+    const {code = defaultCode, preview = true} = this.props;
     this.state = {
-      code: (this.props.code || defaultCode).trim()
+      code: code.trim(),
+      preview
     };
   }
 
@@ -234,7 +237,15 @@ class ComponentPlayground extends Component {
       this.setState({code: newValue});
     }
   }
-
+  togglePreview() {
+    this.setState(
+      prev => ({preview: !prev.preview}),
+      () => {
+        // trigger resize of editor
+        window.dispatchEvent(new Event('resize'));
+      }
+    );
+  }
   render() {
     const {
       previewBackgroundColor,
@@ -243,7 +254,7 @@ class ComponentPlayground extends Component {
       transformCode,
       noImplicitAny
     } = this.props;
-
+    const {preview, code} = this.state;
     const useDarkTheme = theme === 'dark';
     const externalPrismTheme = this.props.theme === 'external';
     const className = `language-jsx ${
@@ -253,15 +264,27 @@ class ComponentPlayground extends Component {
     return (
       <PlaygroundProvider
         mountStylesheet={false}
-        code={this.state.code}
+        code={code}
         scope={{Component, ...scope}}
         transformCode={transformCode}
         noInline
       >
         <PlaygroundRow>
-          <Title>Live Preview</Title>
+          {preview && <Title>Live Preview</Title>}
           <Title useDarkTheme={useDarkTheme}>
             Source Code
+            <button
+              style={{
+                display: 'inline-block',
+                position: 'absolute',
+                right: '3em',
+                marginTop: '-0.2em',
+                cursor: 'pointer'
+              }}
+              onClick={this.togglePreview}
+            >
+              Preview
+            </button>
             <FullscreenButton onClick={this.requestFullscreen} />
           </Title>
         </PlaygroundRow>
@@ -271,13 +294,14 @@ class ComponentPlayground extends Component {
           onKeyUp={this.onKeyUp}
           onKeyDown={this.onKeyDown}
         >
-          <PlaygroundColumn>
-            <PlaygroundPreview
-              previewBackgroundColor={previewBackgroundColor}
-            />
-            <PlaygroundError />
-          </PlaygroundColumn>
-
+          {preview && (
+            <PlaygroundColumn>
+              <PlaygroundPreview
+                previewBackgroundColor={previewBackgroundColor}
+              />
+              <PlaygroundError />
+            </PlaygroundColumn>
+          )}
           <PlaygroundColumn>
             <PlaygroundEditor
               className={className}
@@ -306,7 +330,8 @@ ComponentPlayground.propTypes = {
   scope: PropTypes.object,
   theme: PropTypes.oneOf(['dark', 'light', 'external']),
   transformCode: PropTypes.func,
-  noImplicitAny: PropTypes.bool
+  noImplicitAny: PropTypes.bool,
+  preview: PropTypes.bool
 };
 
 ComponentPlayground.defaultProps = {

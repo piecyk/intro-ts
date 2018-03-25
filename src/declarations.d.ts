@@ -16,13 +16,6 @@ declare module 'emoji-mart';
 declare module 'react-portal';
 
 declare module '*.json';
-const path: string;
-declare module '*.png' {
-  export default path;
-}
-declare module '*.jpg' {
-  export default path;
-}
-declare module '*.gif' {
-  export default path;
-}
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.gif';

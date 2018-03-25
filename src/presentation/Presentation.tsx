@@ -168,7 +168,8 @@ export default class Presentation extends React.Component<{}, {}> {
             </Text>
             <div style={{margin: '30px 0px 0px 30px', textAlign: 'left'}}>
               <Text textColor="#333" textSize={'1em'} margin="15px 0">
-                > No surprise here <b>TYPES</b>
+                > No surprise here <b>TYPES</b>{' '}
+                <MyMyEmoji32 id={'raised_hands'} />
               </Text>
               <Text textColor="#333" textSize={'1em'} margin="15px 0">
                 > <b>Open Source!</b> <MyMyEmoji32 id={'clap'} />,
@@ -228,6 +229,24 @@ export default class Presentation extends React.Component<{}, {}> {
               code={require('raw-loader!./example/example03.etsx')}
               previewBackgroundColor="#ff0"
               transformCode={transformCode}
+              preview={false}
+            />
+          </Slide>
+          <Slide transition={['fade']} bgColor="tertiary">
+            <Heading size={4} textColor="secondary">
+              Declaration Files
+            </Heading>
+          </Slide>
+          <Slide transition={['fade']} bgColor="secondary" textColor="primary">
+            <Heading size={6} textColor="primary" caps>
+              Example Code 04 - declarations.d.ts
+            </Heading>
+            <ComponentPlayground
+              theme="dark"
+              code={`${require('!!raw-loader!./../declarations.d.ts')} \n render(null)`}
+              previewBackgroundColor="#ff0"
+              transformCode={transformCode}
+              preview={false}
             />
           </Slide>
           <Slide transition={['fade']} bgColor="tertiary">

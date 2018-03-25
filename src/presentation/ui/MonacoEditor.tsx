@@ -65,10 +65,6 @@ class MonacoEditor extends Component<Props, {}> {
   componentDidMount() {
     this.mouted = true;
 
-    setTimeout(() => {
-      this.dispose();
-    }, 0);
-
     window.setTimeout(() => {
       if (this.mouted && this.editorRootEl) {
         this.dispose();
