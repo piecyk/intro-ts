@@ -31,6 +31,7 @@ require('normalize.css');
 import MePicture from 'public_static/assets/me.jpg';
 import NotCare from 'public_static/assets/NotCare.gif';
 import ScalacLogoPicture from './ui/Scalac/ScalacLogo.png';
+import Superman from 'public_static/assets/Superman.gif';
 
 const MyEmoji = ({id, size}: {id: string; size: number}) => (
   <Emoji emoji={{id, skin: 1}} size={size} set={'google'} />
@@ -124,7 +125,7 @@ export default class Presentation extends React.Component<{}, {}> {
                 'sleuth_or_spy',
                 'nerd_face',
                 'man-running',
-                'man-biking'
+                'baby'
               ].map(emojiId => <MyMyEmoji64 key={emojiId} id={emojiId} />)}
             </div>
             <Portal>
@@ -164,7 +165,8 @@ export default class Presentation extends React.Component<{}, {}> {
               Why TypeScript? — JS with superpowers
             </Heading>
             <Text textColor="tertiary">
-              Giving Type Check to JavaScript <br /> ( from 2012 )
+              Syntactic superset of JavaScript that compiles to JS (EcmaScript
+              3+)
             </Text>
             <div style={{margin: '30px 0px 0px 30px', textAlign: 'left'}}>
               <Text textColor="#333" textSize={'1em'} margin="15px 0">
@@ -203,85 +205,151 @@ export default class Presentation extends React.Component<{}, {}> {
               <Cite>Eric Elliott</Cite>
             </BlockQuote>
           </Slide>
-          <Slide transition={['fade']} bgColor="secondary" textColor="primary">
-            <Heading size={6} textColor="primary" caps>
-              Example Code 00 - TypeScript in 5 minutes
+
+          <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
+            <Heading size={6} textColor="primary">
+              TypeScript in 5 minutes <MyMyEmoji48 id={'rocket'} />
             </Heading>
             <ComponentPlayground
               theme="dark"
-              code={require('raw-loader!./example/example00.etsx')}
               previewBackgroundColor="#ff0"
-              scope={{LiveLogger}}
               transformCode={transformCode}
+              code={require('raw-loader!./example/example00.etsx')}
+              scope={{LiveLogger}}
+              preview={false}
             />
           </Slide>
+
+          <Slide
+            transition={['fade']}
+            bgColor="quarternary"
+            textColor="tertiary"
+          >
+            <Heading size={4} textColor="secondary">
+              Bede grał w te gre! <MyMyEmoji64 id={'video_game'} />
+            </Heading>
+            <Image src={Superman} margin="0px auto 40px" />
+          </Slide>
+
           <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
             <Heading size={4} textColor="secondary">
               Where JS is not so good...
             </Heading>
+            <div style={{textAlign: 'left', marginTop: 40}}>
+              <Heading size={6} textColor="tertiary">
+                Refactoring
+              </Heading>
+              <Heading size={6} textColor="tertiary">
+                Large codebase
+              </Heading>
+              <Heading size={6} textColor="tertiary">
+                Big team
+              </Heading>
+              <Heading size={6} textColor="tertiary">
+                Type checks in JS can take time
+              </Heading>
+            </div>
           </Slide>
+
           <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
-            <Heading size={6} textColor="primary" caps>
-              Example Code 03 - Simple types
+            <Heading size={6} textColor="primary">
+              Simple types
             </Heading>
             <ComponentPlayground
               theme="dark"
-              code={require('raw-loader!./example/example03.etsx')}
               previewBackgroundColor="#ff0"
               transformCode={transformCode}
-              preview={false}
-            />
-          </Slide>
-          <Slide transition={['fade']} bgColor="tertiary">
-            <Heading size={4} textColor="secondary">
-              Declaration Files
-            </Heading>
-          </Slide>
-          <Slide transition={['fade']} bgColor="secondary" textColor="primary">
-            <Heading size={6} textColor="primary" caps>
-              Example Code 04 - declarations.d.ts
-            </Heading>
-            <ComponentPlayground
-              theme="dark"
-              code={`${require('!!raw-loader!./../declarations.d.ts')} \n render(null)`}
-              previewBackgroundColor="#ff0"
-              transformCode={transformCode}
-              preview={false}
-            />
-          </Slide>
-          <Slide transition={['fade']} bgColor="tertiary">
-            <Heading size={4} textColor="secondary">
-              Compiler options <MyMyEmoji64 id={'thinking_face'} />
-            </Heading>
-          </Slide>
-          <Slide transition={['fade']} bgColor="secondary" textColor="primary">
-            <Heading size={6} textColor="primary" caps>
-              Example Code 01
-            </Heading>
-            <ComponentPlayground
-              theme="dark"
               code={require('raw-loader!./example/example01.etsx')}
+              preview={false}
+            />
+          </Slide>
+
+          <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
+            <Heading size={4} textColor="tertiary">
+              tsconfig.json
+            </Heading>
+            <Text>
+              The tsconfig.json file in a directory indicates that the directory
+              is the root of a TypeScript project.
+            </Text>
+          </Slide>
+
+          <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
+            <Heading size={6} textColor="primary">
+              Compiler options <MyMyEmoji48 id={'thinking_face'} />
+            </Heading>
+            <ComponentPlayground
+              theme="dark"
               previewBackgroundColor="#ff0"
               transformCode={transformCode}
+              code={`${''} \n render(null)`}
+              preview={false}
+            />
+          </Slide>
+
+          <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
+            <Heading size={4} textColor="tertiary">
+              Functions, Interfaces, Optional Properties, Classes, Generics...
+            </Heading>
+          </Slide>
+
+          <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
+            <Heading size={6} textColor="primary">
+              todo
+            </Heading>
+            <ComponentPlayground
+              theme="dark"
+              previewBackgroundColor="#ff0"
+              transformCode={transformCode}
+              code={require('raw-loader!./example/example02.etsx')}
               noImplicitAny={true}
             />
           </Slide>
-          <Slide transition={['fade']} bgColor="tertiary">
+
+          <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
             <Heading size={4} textColor="secondary">
-              TS and JS together <MyMyEmoji64 id={'heart_eyes'} />
+              todo
             </Heading>
           </Slide>
+
           <Slide transition={['fade']} bgColor="secondary" textColor="primary">
             <Heading size={6} textColor="primary" caps>
               Example Code 02
             </Heading>
             <ComponentPlayground
               theme="dark"
-              code={require('raw-loader!./example/example02.etsx')}
+              code={require('raw-loader!./example/example03.etsx')}
               previewBackgroundColor="#ff0"
               transformCode={transformCode}
+              noImplicitAny={true}
             />
           </Slide>
+
+          <Slide transition={['fade']} bgColor="tertiary">
+            <Heading size={4} textColor="secondary">
+              TS and JS together <MyMyEmoji64 id={'heart_eyes'} />
+            </Heading>
+          </Slide>
+
+          <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
+            <Heading size={4} textColor="secondary">
+              Declaration Files | Webpack
+            </Heading>
+          </Slide>
+
+          <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
+            <Heading size={6} textColor="quarternary">
+              *.d.ts | declarations.d.ts
+            </Heading>
+            <ComponentPlayground
+              theme="dark"
+              previewBackgroundColor="#ff0"
+              transformCode={transformCode}
+              code={`${require('!!raw-loader!./../declarations.d.ts')} \n render(null)`}
+              preview={false}
+            />
+          </Slide>
+
           <Slide transition={['fade']} bgColor="tertiary" textColor="secondary">
             <Heading textColor="secondary" fit>
               End.

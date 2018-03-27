@@ -1,7 +1,6 @@
 // todo: note
 render(<LiveLogger />);
-
-// yarn or npm
+// install tsc compiler by yarn or npm,
 // > npm install -g typescript
 // type the following JavaScript code in foo.ts
 function greeter(year) {

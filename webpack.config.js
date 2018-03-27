@@ -12,19 +12,13 @@ const outPath = path.resolve(__dirname, 'docs');
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
   entry: {
-    "app": [
-      // "@babel/polyfill" ?
-      // "webpack-hot-middleware/client",
-      // "react-hot-loader/patch",
-      path.resolve(srcPath, 'index.tsx')
-    ],
+    "app": path.resolve(srcPath, 'index.tsx'),
     "editor.worker": 'monaco-editor/esm/vs/editor/editor.worker.js',
     "ts.worker": 'monaco-editor/esm/vs/language/typescript/ts.worker',
   },
   output: {
     path: outPath,
     filename: "[name].bundle.js"
-    // publicPath: '/'
   },
   resolve: {
     modules: [

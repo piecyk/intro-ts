@@ -1,15 +1,35 @@
-// todo: note
-interface Props {
-  name: string;
-  year: number;
+// todo:
+// Boolean
+let isDone: boolean = false;
+// Number
+let decimal: number = 6;
+// String
+let me: string = 'Damian';
+let sentence: string = `Hello, my name is ${me}.`;
+// Array
+let list: number[] = [1, 2, 3]; // Array<number>
+// Tuple
+let x: [string, number];
+// object | Object | {}
+let obj0: object = {};
+let obj1: {} = {};
+// Enum
+enum Color {
+  Red,
+  Green,
+  Blue
 }
+// Any
+let notSure: any = 4;
+// Void | void is like the opposite of any
+function warnUser(): void {}
+// Null and Undefined
+let u: undefined = undefined;
+let n: null = null;
+// Never
+// The never type represents the type of values that never occur.
+// Trust me, I know what I’m doing. `as`
+let someValue: any = 'this is a string';
+let strLength: number = (someValue as string).length;
 
-const Hello = ({name, year}) => (
-  <div style={{color: '#000'}}>
-    <h1>
-      Hello {name} {year}
-    </h1>
-  </div>
-);
-
-render(<Hello name="JS Rzeszów" year={2018} />);
+render(null);
