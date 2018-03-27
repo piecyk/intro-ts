@@ -141,25 +141,20 @@ export default class Presentation extends React.Component<{}, {}> {
                 Basic Types
               </Heading>
               <Heading size={5} textColor="secondary">
-                Functions, Interfaces
+                Functions, Classes, Interfaces, Generics...
               </Heading>
-              <Heading size={5} textColor="secondary">
-                Classes
-              </Heading>
-              <Heading size={5} textColor="secondary">
-                Generics
-              </Heading>
-              <Heading size={5} textColor="secondary">
-                Declaration Files
-              </Heading>
-              <Heading size={5} textColor="secondary">
+              <Heading size={5} textColor="primary">
                 JavaScript with TypeScript
+              </Heading>
+              <Heading size={6} textColor="secondary">
+                Webpack | Declaration Files
               </Heading>
               <Heading size={5} textColor="primary">
                 Living on the edge? <MyMyEmoji48 id={'sleuth_or_spy'} />
               </Heading>
             </div>
           </Slide>
+
           <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
             <Heading size={4} textColor="secondary">
               Why TypeScript? — JS with superpowers
@@ -169,24 +164,45 @@ export default class Presentation extends React.Component<{}, {}> {
               3+)
             </Text>
             <div style={{margin: '30px 0px 0px 30px', textAlign: 'left'}}>
-              <Text textColor="#333" textSize={'1em'} margin="15px 0">
-                > No surprise here <b>TYPES</b>{' '}
+              <Text textColor="#333" textSize={'1em'} margin="20px 0">
+                No surprise here <b>TYPES</b>{' '}
                 <MyMyEmoji32 id={'raised_hands'} />
               </Text>
-              <Text textColor="#333" textSize={'1em'} margin="15px 0">
-                > <b>Open Source!</b> <MyMyEmoji32 id={'clap'} />,
+              <Text textColor="#333" textSize={'1em'} margin="20px 0">
+                <b>Open Source!</b> <MyMyEmoji32 id={'clap'} />,
                 DefinitelyTyped, Tool's Integration
               </Text>
-              <Text textColor="#333" textSize={'1em'} margin="15px 0">
-                > March 2018 - <b>8,584,855</b> downloads of <br /> typescript
+              <Text textColor="#333" textSize={'1em'} margin="20px 0">
+                March 2018 - <b>8,584,855</b> downloads of <br /> typescript
                 package! <MyMyEmoji32 id={'open_mouth'} />
               </Text>
-              <Text textColor="#333" textSize={'1em'} margin="15px 0">
-                > GitHub’s own 2017 State of the Octoverse puts{' '}
+              <Text textColor="#333" textSize={'1em'} margin="20px 0">
+                GitHub’s own 2017 State of the Octoverse puts{' '}
                 <b>TypeScript the 11th</b> most popular language!
               </Text>
             </div>
           </Slide>
+
+           <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
+            <Heading size={4} textColor="secondary">
+              Where JS is not so good...
+            </Heading>
+            <div style={{textAlign: 'left', marginTop: 40}}>
+              <Heading size={6} textColor="tertiary">
+                Refactoring
+              </Heading>
+              <Heading size={6} textColor="tertiary">
+                Large codebase
+              </Heading>
+              <Heading size={6} textColor="tertiary">
+                Big team
+              </Heading>
+              <Heading size={6} textColor="tertiary">
+                Type checks in JS can take time
+              </Heading>
+            </div>
+          </Slide>
+
           <Slide
             transition={['fade']}
             bgColor="quarternary"
@@ -231,24 +247,31 @@ export default class Presentation extends React.Component<{}, {}> {
             <Image src={Superman} margin="0px auto 40px" />
           </Slide>
 
+
           <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
-            <Heading size={4} textColor="secondary">
-              Where JS is not so good...
+            <Heading size={4} textColor="tertiary">
+              tsconfig.json
             </Heading>
-            <div style={{textAlign: 'left', marginTop: 40}}>
-              <Heading size={6} textColor="tertiary">
-                Refactoring
-              </Heading>
-              <Heading size={6} textColor="tertiary">
-                Large codebase
-              </Heading>
-              <Heading size={6} textColor="tertiary">
-                Big team
-              </Heading>
-              <Heading size={6} textColor="tertiary">
-                Type checks in JS can take time
-              </Heading>
-            </div>
+            <Text margin="40px 0">
+              The tsconfig.json file in a directory indicates that the directory
+              is the root of a TypeScript project.
+            </Text>
+          </Slide>
+
+          <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
+            <Heading size={6} textColor="primary">
+              tsconfig | Compiler options <MyMyEmoji48 id={'thinking_face'} />
+            </Heading>
+            <ComponentPlayground
+              theme="dark"
+              previewBackgroundColor="#ff0"
+              transformCode={transformCode}
+              code={JSON.stringify(require('tsconfig.json'), null, 2)}
+              preview={false}
+              disablePreview={true}
+              noSyntaxValidation={true}
+              noSemanticValidation={true}
+            />
           </Slide>
 
           <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
@@ -266,36 +289,14 @@ export default class Presentation extends React.Component<{}, {}> {
 
           <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
             <Heading size={4} textColor="tertiary">
-              tsconfig.json
-            </Heading>
-            <Text>
-              The tsconfig.json file in a directory indicates that the directory
-              is the root of a TypeScript project.
-            </Text>
-          </Slide>
-
-          <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
-            <Heading size={6} textColor="primary">
-              Compiler options <MyMyEmoji48 id={'thinking_face'} />
-            </Heading>
-            <ComponentPlayground
-              theme="dark"
-              previewBackgroundColor="#ff0"
-              transformCode={transformCode}
-              code={`${''} \n render(null)`}
-              preview={false}
-            />
-          </Slide>
-
-          <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
-            <Heading size={4} textColor="tertiary">
               Functions, Interfaces, Optional Properties, Classes, Generics...
+              <MyMyEmoji48 id={'scream'} />
             </Heading>
           </Slide>
 
           <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
             <Heading size={6} textColor="primary">
-              todo
+              Example Code 01
             </Heading>
             <ComponentPlayground
               theme="dark"
@@ -308,7 +309,7 @@ export default class Presentation extends React.Component<{}, {}> {
 
           <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
             <Heading size={4} textColor="secondary">
-              todo
+              In Real Life...
             </Heading>
           </Slide>
 
@@ -333,8 +334,24 @@ export default class Presentation extends React.Component<{}, {}> {
 
           <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
             <Heading size={4} textColor="secondary">
-              Declaration Files | Webpack
+              Webpack | Declaration Files
             </Heading>
+          </Slide>
+
+          <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
+            <Heading size={6} textColor="quarternary">
+              webpack.config.js
+            </Heading>
+            <ComponentPlayground
+              theme="dark"
+              previewBackgroundColor="#ff0"
+              transformCode={transformCode}
+              code={require('!!raw-loader!webpack.config.js')}
+              preview={false}
+              disablePreview={true}
+              noSyntaxValidation={true}
+              noSemanticValidation={true}
+            />
           </Slide>
 
           <Slide transition={['fade']} bgColor="tertiary" textColor="primary">
@@ -345,14 +362,34 @@ export default class Presentation extends React.Component<{}, {}> {
               theme="dark"
               previewBackgroundColor="#ff0"
               transformCode={transformCode}
-              code={`${require('!!raw-loader!./../declarations.d.ts')} \n render(null)`}
+              code={require('!!raw-loader!./../declarations.d.ts')}
               preview={false}
+              disablePreview={true}
+              noSyntaxValidation={true}
+              noSemanticValidation={true}
             />
+          </Slide>
+
+          <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
+            <Heading size={4} textColor="secondary">
+              TypeScript Roadmap
+            </Heading>
+            <div style={{textAlign: 'left', marginTop: 40}}>
+              <Heading size={6} textColor="tertiary">
+                2.9 (May 2018)
+              </Heading>
+              <Heading size={6} textColor="tertiary">
+                2.8 (March 2018)
+              </Heading>
+              <Heading size={6} textColor="tertiary">
+                2.7 (January 2018)
+              </Heading>
+            </div>
           </Slide>
 
           <Slide transition={['fade']} bgColor="tertiary" textColor="secondary">
             <Heading textColor="secondary" fit>
-              End.
+              End. Questions?
             </Heading>
           </Slide>
         </Deck>

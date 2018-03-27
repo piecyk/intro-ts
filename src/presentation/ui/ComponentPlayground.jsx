@@ -252,7 +252,10 @@ class ComponentPlayground extends Component {
       scope = {},
       theme = 'dark',
       transformCode,
-      noImplicitAny
+      noImplicitAny,
+      noSemanticValidation,
+      noSyntaxValidation,
+      disablePreview = false
     } = this.props;
     const {preview, code} = this.state;
     const useDarkTheme = theme === 'dark';
@@ -273,18 +276,20 @@ class ComponentPlayground extends Component {
           {preview && <Title>Live Preview</Title>}
           <Title useDarkTheme={useDarkTheme}>
             Source Code
-            <button
-              style={{
-                display: 'inline-block',
-                position: 'absolute',
-                right: '3em',
-                marginTop: '-0.2em',
-                cursor: 'pointer'
-              }}
-              onClick={this.togglePreview}
-            >
-              Preview
-            </button>
+            {!disablePreview &&
+              <button
+                style={{
+                  display: 'inline-block',
+                  position: 'absolute',
+                  right: '3em',
+                  marginTop: '-0.2em',
+                  cursor: 'pointer'
+                }}
+                onClick={this.togglePreview}
+              >
+                Preview
+              </button>
+            }
             <FullscreenButton onClick={this.requestFullscreen} />
           </Title>
         </PlaygroundRow>
@@ -311,6 +316,8 @@ class ComponentPlayground extends Component {
               }
               onChange={this.onEditorChange}
               noImplicitAny={noImplicitAny}
+              noSemanticValidation={noSemanticValidation}
+              noSyntaxValidation={noSyntaxValidation}
             />
           </PlaygroundColumn>
         </PlaygroundRow>
@@ -331,7 +338,10 @@ ComponentPlayground.propTypes = {
   theme: PropTypes.oneOf(['dark', 'light', 'external']),
   transformCode: PropTypes.func,
   noImplicitAny: PropTypes.bool,
-  preview: PropTypes.bool
+  preview: PropTypes.bool,
+  disablePreview: PropTypes.bool,
+  noSemanticValidation: PropTypes.bool,
+  noSyntaxValidation: PropTypes.bool
 };
 
 ComponentPlayground.defaultProps = {

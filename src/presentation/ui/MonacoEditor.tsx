@@ -45,6 +45,8 @@ interface Props {
   onError: (error: Error) => void;
   onChange: (nextCode: string) => void;
   noImplicitAny: boolean;
+  noSemanticValidation: boolean;
+  noSyntaxValidation: boolean;
 }
 
 // only one editor per slide
@@ -69,12 +71,21 @@ class MonacoEditor extends Component<Props, {}> {
       if (this.mouted && this.editorRootEl) {
         this.dispose();
         // compiler option
-        const {noImplicitAny = false} = this.props;
+        const {
+          noImplicitAny = false,
+          noSemanticValidation = false,
+          noSyntaxValidation = false
+        } = this.props;
+
         monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
           noEmit: true,
           noImplicitAny,
           sourceMap: false,
           jsx: 2
+        });
+        monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
+          noSemanticValidation,
+          noSyntaxValidation
         });
         //
         editorRef = monaco.editor.create(this.editorRootEl, {
